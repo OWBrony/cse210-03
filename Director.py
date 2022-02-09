@@ -14,11 +14,11 @@ class Director():
 
     def start_game(self):
         '''Generates the start of the game'''
-        self.generator.generate_word()
-
+        holder = self.generator.generate_word()
+        print(holder)
         self.jumper.generate_grid()
 
-        self.jumper.jumper_health = 10
+        #self.jumper.health = 10
 
 
 

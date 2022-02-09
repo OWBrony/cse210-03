@@ -18,8 +18,7 @@ class Generator():
 
         Could be replaced by a list of words contained in-code. 
         """
+        words = ["apple","blueberry","banana","cheese","sugar","pie"]
 
-        with open("words.txt", "r") as ranwords:
-            read_line = ranwords.readlines()
-            self.word = read_line[random.randint(1,10000)].strip("\n")
+        self.word = words[random.randint(0,len(words) - 1)]
         return self.word

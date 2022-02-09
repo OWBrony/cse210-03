@@ -9,7 +9,7 @@ class Jumper():
         self.health = 10
         self.word = str
 
-    def generate_grid(self, health):
+    def generate_grid(self):
         pass
 
     
