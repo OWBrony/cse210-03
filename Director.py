@@ -16,7 +16,7 @@ class Director():
         '''Generates the start of the game'''
         holder = self.generator.generate_word()
         print(holder)
-        self.jumper.generate_grid()
+        self.jumper.generate_grid(holder)
 
         #self.jumper.health = 10
 
