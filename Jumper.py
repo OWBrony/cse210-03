@@ -15,31 +15,31 @@ class Jumper():
 
     def _make_parachute(self):
         if self.health == 4:
-            for i in self.parachute:
-                print(f"{self.parachute[i]}")
+            for item in self.parachute:
+                print(self.parachute[item])
         elif self.health == 3 and len(self.parachute) == 3:
-            for i in self.parachute:
-                print(f"{self.parachute[i]}")
+            for item in self.parachute:
+                print(f"{self.parachute[item]}")
         elif self.health == 3:
             self.parachute.pop(0)
-            for i in self.parachute:
-                print(f"{self.parachute[i]}")
+            for item in self.parachute:
+                print(f"{self.parachute[item]}")
         elif self.health == 2 and len(self.parachute) == 2:
-            for i in self.parachute:
-                print(f"{self.parachute[i]}")
+            for item in self.parachute:
+                print(f"{self.parachute[item]}")
         elif self.health == 2:
             self.parachute.pop(0)
-            for i in self.parachute:
-                print(f"{self.parachute[i]}")
+            for item in self.parachute:
+                print(f"{self.parachute[item]}")
         elif self.health == 1 and len(self.parachute) == 1:
-            for i in self.parachute:
-                print(f"{self.parachute[i]}")
+            for item in len(self.parachute):
+                print(f"{self.parachute[item]}")
         elif self.health == 1:
             self.parachute.pop(0)
-            for i in self.parachute:
-                print(f"{self.parachute[i]}")
+            for item in self.parachute:
+                print(f"{self.parachute[item]}")
         else:
-            None
+            print()
 
     def _make_jumper(self):
         if self.health == 0:
@@ -54,8 +54,8 @@ class Jumper():
         check_letters(word, letter)
 
     def generate_grid(self,word):
-        _make_parachute()
-        _make_jumper()
+        self._make_parachute()
+        self._make_jumper()
         print("^^^^^^^^^^")
 
     def _check_letters(self, word, letter = None):
