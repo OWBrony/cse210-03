@@ -12,4 +12,4 @@ class Guesser():
         ''' player_input will get and return user input'''    
     def player_input(self):
 
-            return input("Please enter a letter: ")
+            return input("Please enter a letter (A-Z): ")

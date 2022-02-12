@@ -14,41 +14,41 @@ class Jumper():
         self.wrong_guesses = []
 
     def _make_parachute(self):
-        if self.health == 4:
+        if self.parachute == None:
+            print()
+        elif self.health == 4:
             for item in self.parachute:
-                print(self.parachute[item])
+                print(item)
         elif self.health == 3 and len(self.parachute) == 3:
             for item in self.parachute:
-                print(f"{self.parachute[item]}")
+                print(item)
         elif self.health == 3:
             self.parachute.pop(0)
             for item in self.parachute:
-                print(f"{self.parachute[item]}")
+                print(item)
         elif self.health == 2 and len(self.parachute) == 2:
             for item in self.parachute:
-                print(f"{self.parachute[item]}")
+                print(item)
         elif self.health == 2:
             self.parachute.pop(0)
             for item in self.parachute:
-                print(f"{self.parachute[item]}")
+                print(item)
         elif self.health == 1 and len(self.parachute) == 1:
-            for item in len(self.parachute):
-                print(f"{self.parachute[item]}")
+            for item in self.parachute:
+                print(item)
         elif self.health == 1:
             self.parachute.pop(0)
             for item in self.parachute:
-                print(f"{self.parachute[item]}")
-        else:
-            print()
+                print(item)
 
     def _make_jumper(self):
         if self.health == 0:
             self.jumper[0] = "  X  "
-            for i in self.jumper:
-                print(self.jumper[i])
+            for item in self.jumper:
+                print(item)
         else:
-            for i in self.jumper:
-                print(self.jumper[i])
+            for item in self.jumper:
+                print(item)
 
     def showWord(self,word,letter):
         check_letters(word, letter)
@@ -56,19 +56,33 @@ class Jumper():
     def generate_grid(self,word):
         self._make_parachute()
         self._make_jumper()
+        print()
         print("^^^^^^^^^^")
+        print()
 
-    def _check_letters(self, word, letter = None):
+    def check_letters(self, word, letter = None):
         if letter == None:
             pass
         else:
-            if letter in word:
-                self.correct_guesses.append(letter)
+            if letter.lower() in word:
+                self.correct_guesses.append(letter.lower())
             else:
-                self.wrong_guesses.append(letter)
+                self.wrong_guesses.append(letter.lower())
+                self.health -= 1
+
+    def print_word(self, word):
+        for letter in word:
+            if letter in self.correct_guesses:
+                print(f" {letter}", end = " ")
+            else:
+                print("_", end = " ")
+        print()
 
     def check_health(self):
         if self.health == 0:
-            print(f"\nYou have ran out of lives the word was {self.word}")
-            print("Thanks for playing")
-            return self.keep_Playing == False
+            return False
+        else:
+            return True
+        # elif self.correct_guesses in word:
+        #     print("You Won!")
+        #     return self.keep_Playing == False
