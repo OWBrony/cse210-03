@@ -3,7 +3,8 @@
 Contains code for checking guessed letters and stores the word. Passes to director whether the games is over.'''
 
 class Jumper():
-    def __init__(self):
+    def __init__(self, word):
+        self.word = word
         self.health = 4
         self.parachute = [" ___ ", "/   \ " , " --- " ," \ / "]
         self.jumper = ["  O  "," /|\ "," / \ "]
@@ -47,34 +48,34 @@ class Jumper():
             for item in self.jumper:
                 print(item)
 
-    def generate_grid(self,word):
+    def generate_grid(self):
         self._make_parachute()
         self._make_jumper()
         print()
         print("^^^^^^^^^^")
         print()
 
-    def check_letters(self, word, letter = None):
+    def check_letters(self, letter = None):
         if len(letter) == 0:
             pass
         else:
             letter = letter[0].lower()
-            if letter in word:
+            if letter in self.word:
                 self.correct_guesses.append(letter)
             else:
                 self.wrong_guesses.append(letter)
                 self.health -= 1
 
-    def print_word(self, word):
-        for letter in word:
+    def print_word(self):
+        for letter in self.word:
             if letter in self.correct_guesses:
                 print(f" {letter}", end = " ")
             else:
                 print("_", end = " ")
         print()
 
-    def check_word_guessed(self, word):
-        for char in word:
+    def check_word_guessed(self):
+        for char in self.word:
             if char.lower() not in self.correct_guesses:
                 return False
         return True
@@ -82,8 +83,8 @@ class Jumper():
     def check_alive(self):
         return self.health > 0
 
-    def check_active(self, word):
-        if self.check_word_guessed(word):
+    def check_active(self):
+        if self.check_word_guessed():
             return False
         else:
             return self.check_alive()
