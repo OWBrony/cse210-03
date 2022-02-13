@@ -1,9 +1,6 @@
 import random
 
-
 '''Word generator class takes a random word from a list of possible words and passes the word along. '''
-
-
 
 class Generator():
     def __init__(self):

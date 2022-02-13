@@ -2,7 +2,6 @@ from Jumper import Jumper
 from Guesser import Guesser
 from Generator import Generator
 
-
 class Director():
 
     def __init__(self):
@@ -16,9 +15,6 @@ class Director():
         '''Generates the start of the game'''
         holder = self.generator.generate_word()
         print(holder)
-        
-
-        #self.jumper.health = 10
 
         '''Checks whether to continue game loop'''
         while self.keep_playing == True:
@@ -38,4 +34,4 @@ class Director():
 
     def end_game_bad(self,word):
         print(f"\nYou have ran out of lives the word was {word}")
-        print("Thanks for playing")
+        print("Thanks for playing!")

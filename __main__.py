@@ -1,4 +1,5 @@
 from Director import Director
+
 def main():
     game = Director()
     game.start_game()

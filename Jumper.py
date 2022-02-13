@@ -1,7 +1,4 @@
 
-
-
-
 '''Jumper class holds the status of the jumper and handles the removal of parachute parts. recieves "wrong" flags and deletes part of parachute. Passes to director whether the games is over.'''
 
 class Jumper():
@@ -49,9 +46,6 @@ class Jumper():
         else:
             for item in self.jumper:
                 print(item)
-
-    def showWord(self,word,letter):
-        check_letters(word, letter)
 
     def generate_grid(self,word):
         self._make_parachute()
