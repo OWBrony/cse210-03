@@ -21,7 +21,7 @@ class Director():
             '''Call functions required for game mechanics'''
             self.jumper.generate_grid()
             print()
-            self.jumper.check_letters(self.guesser.player_input())
+            self.jumper.check_letter(self.guesser.player_input())
             print()
             self.jumper.print_word()
             print()

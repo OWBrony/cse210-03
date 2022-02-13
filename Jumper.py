@@ -2,14 +2,16 @@
 '''Jumper class holds the status of the jumper and handles the removal of parachute parts. 
 Contains code for checking guessed letters and stores the word. Passes to director whether the games is over.'''
 
+from ctypes.wintypes import WORD
+
+
 class Jumper():
     def __init__(self, word):
         self.word = word
         self.health = 4
         self.parachute = [" ___ ", "/   \ " , " --- " ," \ / "]
         self.jumper = ["  O  "," /|\ "," / \ "]
-        self.correct_guesses = []
-        self.wrong_guesses = []
+        self.guesses = []
 
     def _make_parachute(self):
         if self.parachute == None:
@@ -55,20 +57,21 @@ class Jumper():
         print("^^^^^^^^^^")
         print()
 
-    def check_letters(self, letter = None):
+    def check_letter(self, letter = None):
         if len(letter) == 0:
             pass
         else:
             letter = letter[0].lower()
-            if letter in self.word:
-                self.correct_guesses.append(letter)
-            else:
-                self.wrong_guesses.append(letter)
+            if letter in self.guesses:
+                print("That letter was already guessed.")
+                return
+            self.guesses.append(letter)
+            if letter not in self.word:
                 self.health -= 1
 
     def print_word(self):
         for letter in self.word:
-            if letter in self.correct_guesses:
+            if letter in self.guesses:
                 print(f" {letter}", end = " ")
             else:
                 print("_", end = " ")
@@ -76,7 +79,7 @@ class Jumper():
 
     def check_word_guessed(self):
         for char in self.word:
-            if char.lower() not in self.correct_guesses:
+            if char.lower() not in self.guesses:
                 return False
         return True
 
