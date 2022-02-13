@@ -14,24 +14,33 @@ class Director():
     def start_game(self):
         '''Generates the start of the game'''
         holder = self.generator.generate_word()
-        print(holder)
+        self.jumper.print_word(holder)
+        print()
 
         '''Checks whether to continue game loop'''
         while self.keep_playing == True:
-            '''call functions required for game mechanics'''
+            '''Call functions required for game mechanics'''
             self.jumper.generate_grid(holder)
             print()
             self.jumper.check_letters(holder,self.guesser.player_input())
+            print()
             self.jumper.print_word(holder)
-            self.keep_playing = self.jumper.check_health()
+            print()
+            self.keep_playing = self.jumper.check_active(holder)
         self.jumper.generate_grid(holder)
-        self.end_game_bad(holder)
+        if self.jumper.check_alive():
+            self.end_game_good()
+        else:
+            self.end_game_bad(holder)
 
     def get_inputs(self):
         letter =  self.Jumper.player_input()
         return letter
 
-
     def end_game_bad(self,word):
-        print(f"\nYou have ran out of lives the word was {word}")
+        print(f"\nYour jumper's parachute failed! The word was {word}.")
+        print("Thanks for playing!")
+
+    def end_game_good(self):
+        print("\nYou have guessed the word and saved your jumper!")
         print("Thanks for playing!")

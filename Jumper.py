@@ -1,10 +1,10 @@
 
-'''Jumper class holds the status of the jumper and handles the removal of parachute parts. recieves "wrong" flags and deletes part of parachute. Passes to director whether the games is over.'''
+'''Jumper class holds the status of the jumper and handles the removal of parachute parts. 
+Contains code for checking guessed letters and stores the word. Passes to director whether the games is over.'''
 
 class Jumper():
     def __init__(self):
         self.health = 4
-        self.word = str
         self.parachute = [" ___ ", "/   \ " , " --- " ," \ / "]
         self.jumper = ["  O  "," /|\ "," / \ "]
         self.correct_guesses = []
@@ -55,13 +55,14 @@ class Jumper():
         print()
 
     def check_letters(self, word, letter = None):
-        if letter == None:
+        if len(letter) == 0:
             pass
         else:
-            if letter.lower() in word:
-                self.correct_guesses.append(letter.lower())
+            letter = letter[0].lower()
+            if letter in word:
+                self.correct_guesses.append(letter)
             else:
-                self.wrong_guesses.append(letter.lower())
+                self.wrong_guesses.append(letter)
                 self.health -= 1
 
     def print_word(self, word):
@@ -72,11 +73,17 @@ class Jumper():
                 print("_", end = " ")
         print()
 
-    def check_health(self):
-        if self.health == 0:
+    def check_word_guessed(self, word):
+        for char in word:
+            if char.lower() not in self.correct_guesses:
+                return False
+        return True
+
+    def check_alive(self):
+        return self.health > 0
+
+    def check_active(self, word):
+        if self.check_word_guessed(word):
             return False
         else:
-            return True
-        # elif self.correct_guesses in word:
-        #     print("You Won!")
-        #     return self.keep_Playing == False
+            return self.check_alive()
