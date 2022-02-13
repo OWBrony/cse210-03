@@ -12,7 +12,8 @@ class Director():
         self.keep_playing = True
 
     def start_game(self):
-        '''Generates the start of the game'''
+        '''Generates the start of the game with one letter already guessed.'''
+        self.jumper.check_letter(self.generator.random_letter(self.jumper.word))
         self.jumper.print_word()
         print()
 

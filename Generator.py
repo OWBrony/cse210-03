@@ -17,3 +17,6 @@ class Generator():
 
         self.word = words[random.randint(0,len(words) - 1)]
         return self.word
+
+    def random_letter(self, word):
+        return word[random.randint(0,len(word) - 1)]
