@@ -4,7 +4,7 @@ import random
 
 class Generator():
     def __init__(self):
-        self.word = str
+        self._word = str
 
 
     def generate_word(self):
@@ -15,8 +15,8 @@ class Generator():
         """
         words = ["apple","blueberry","banana","cheese","sugar","pie","dough","batter","chocolate","cookies","cake"]
 
-        self.word = words[random.randint(0,len(words) - 1)]
-        return self.word
+        self._word = words[random.randint(0,len(words) - 1)]
+        return self._word
 
     def random_letter(self, word):
         return word[random.randint(0,len(word) - 1)]

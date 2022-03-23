@@ -3,7 +3,7 @@
 
 class Guesser():
     def __init__(self):
-        self.guesses = []
+        self._guesses = []
         self.player_letter = str
 
         ''' player_input will get and return user input'''    
