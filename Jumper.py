@@ -9,45 +9,45 @@ class Jumper():
     def __init__(self, word):
         self.word = word
         self.health = 4
-        self.parachute = [" ___ ", "/   \ " , " --- " ," \ / "]
-        self.jumper = ["  O  "," /|\ "," / \ "]
+        self._parachute = [" ___ ", "/   \ " , " --- " ," \ / "]
+        self._jumper = ["  O  "," /|\ "," / \ "]
         self.guesses = []
 
     def _make_parachute(self):
-        if self.parachute == None:
+        if self._parachute == None:
             print()
         elif self.health == 4:
-            for item in self.parachute:
+            for item in self._parachute:
                 print(item)
-        elif self.health == 3 and len(self.parachute) == 3:
-            for item in self.parachute:
+        elif self.health == 3 and len(self._parachute) == 3:
+            for item in self._parachute:
                 print(item)
         elif self.health == 3:
-            self.parachute.pop(0)
-            for item in self.parachute:
+            self._parachute.pop(0)
+            for item in self._parachute:
                 print(item)
-        elif self.health == 2 and len(self.parachute) == 2:
-            for item in self.parachute:
+        elif self.health == 2 and len(self._parachute) == 2:
+            for item in self._parachute:
                 print(item)
         elif self.health == 2:
-            self.parachute.pop(0)
-            for item in self.parachute:
+            self._parachute.pop(0)
+            for item in self._parachute:
                 print(item)
-        elif self.health == 1 and len(self.parachute) == 1:
-            for item in self.parachute:
+        elif self.health == 1 and len(self._parachute) == 1:
+            for item in self._parachute:
                 print(item)
         elif self.health == 1:
-            self.parachute.pop(0)
-            for item in self.parachute:
+            self._parachute.pop(0)
+            for item in self._parachute:
                 print(item)
 
     def _make_jumper(self):
         if self.health == 0:
-            self.jumper[0] = "  X  "
-            for item in self.jumper:
+            self._jumper[0] = "  X  "
+            for item in self._jumper:
                 print(item)
         else:
-            for item in self.jumper:
+            for item in self._jumper:
                 print(item)
 
     def generate_grid(self):
